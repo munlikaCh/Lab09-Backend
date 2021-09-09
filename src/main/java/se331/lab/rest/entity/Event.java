@@ -2,10 +2,7 @@ package se331.lab.rest.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -13,6 +10,7 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +24,8 @@ public class Event {
     String time;
     Boolean petAllowed;
 //    String organizer;
+    @ManyToOne //2 -> add this
     Organizer organizer;
+    @ManyToMany(mappedBy = "eventHistory")
     List<Participant> participants;
 }
