@@ -7,7 +7,6 @@ import java.util.List;
 
 @Data
 @Builder
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -23,8 +22,8 @@ public class EventDTO {
     String date;
     String time;
     Boolean petAllowed;
-    @ManyToOne //2 -> add this
+    @ManyToOne
     EventOrganizerDTO organizer;
     @ManyToMany(mappedBy = "eventHistory")
-    List<Participant> participants;
+    List<Participant> Participants;
 }

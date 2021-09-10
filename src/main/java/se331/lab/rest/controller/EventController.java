@@ -30,7 +30,8 @@ public class EventController {
                 String.valueOf(pageOutput.getTotalElements()));
         return new
 //                ResponseEntity<>(pageOutput.getContent(),responseHeader,HttpStatus.OK);
-                ResponseEntity<>(LabMapper.INSTANCE.getEventDto(pageOutput.getContent()),responseHeader,HttpStatus.OK);
+                ResponseEntity<>(LabMapper.INSTANCE.getEventDto(pageOutput.getContent())
+                ,responseHeader,HttpStatus.OK);
 
     }
 
