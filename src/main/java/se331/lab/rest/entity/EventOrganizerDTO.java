@@ -1,11 +1,10 @@
 package se331.lab.rest.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -14,6 +13,13 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 
 public class EventOrganizerDTO {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Exclude
     Long id;
     String name;
+    @OneToMany(mappedBy = "organizer")
+//    List<Event> ownEvents;
+    @Builder.Default
+    List<Event> ownEvents = new ArrayList<>();
 }

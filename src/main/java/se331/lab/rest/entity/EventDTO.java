@@ -1,11 +1,9 @@
 package se331.lab.rest.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Builder
@@ -14,6 +12,9 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 
 public class EventDTO {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Exclude
     Long id;
     String category;
     String title;
@@ -22,5 +23,8 @@ public class EventDTO {
     String date;
     String time;
     Boolean petAllowed;
+    @ManyToOne //2 -> add this
     EventOrganizerDTO organizer;
+    @ManyToMany(mappedBy = "eventHistory")
+    List<Participant> participants;
 }
