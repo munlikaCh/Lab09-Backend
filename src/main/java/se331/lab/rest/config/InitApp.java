@@ -6,8 +6,10 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import se331.lab.rest.entity.Event;
 import se331.lab.rest.entity.Organizer;
+import se331.lab.rest.entity.Participant;
 import se331.lab.rest.repository.EventRepository;
 import se331.lab.rest.repository.OrganizerRepository;
+import se331.lab.rest.repository.PaticipantRepository;
 
 import javax.transaction.Transactional;
 
@@ -18,6 +20,9 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
     @Autowired
     OrganizerRepository organizerRepository;
+
+    @Autowired
+    PaticipantRepository paticipantRepository;
 
     @Override
     @Transactional
@@ -32,6 +37,19 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .name("ChiangMai").build());
         Event tempEvent;
 
+        //Partici
+        Participant p1,p2,p3,p4,p5;
+        p1 = paticipantRepository.save(Participant.builder()
+                .name("Xiao").telNo("165").build());
+        p2 = paticipantRepository.save(Participant.builder()
+                .name("Diluc").telNo("995").build());
+        p3 = paticipantRepository.save(Participant.builder()
+                .name("Kazuha").telNo("039").build());
+        p4 = paticipantRepository.save(Participant.builder()
+                .name("Diluc").telNo("995").build());
+        p5 = paticipantRepository.save(Participant.builder()
+                .name("Kazuha").telNo("039").build());
+
         tempEvent = eventRepository.save(Event.builder()
                 .category("Academic")
                 .title("Midterm Exam")
@@ -45,6 +63,15 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 //        eventRepository.save(Event.builder()
         tempEvent.setOrganizer(org1);
         org1.getOwnEvents().add(tempEvent);
+
+        //par
+        tempEvent.getParticipants().add(p1);
+        p1.getEventHistory().add(tempEvent);
+        tempEvent.getParticipants().add(p2);
+        p2.getEventHistory().add(tempEvent);
+        tempEvent.getParticipants().add(p3);
+        p3.getEventHistory().add(tempEvent);
+
         tempEvent = eventRepository.save(Event.builder()
                 .category("Academic")
                 .title("Commencement Day")
@@ -57,6 +84,15 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 //        eventRepository.save(Event.builder()
         tempEvent.setOrganizer(org1);
         org1.getOwnEvents().add(tempEvent);
+
+        //par
+        tempEvent.getParticipants().add(p2);
+        p2.getEventHistory().add(tempEvent);
+        tempEvent.getParticipants().add(p3);
+        p3.getEventHistory().add(tempEvent);
+        tempEvent.getParticipants().add(p4);
+        p4.getEventHistory().add(tempEvent);
+
         tempEvent = eventRepository.save(Event.builder()
                 .category("Cultural")
                 .title("Loy Krathong")
@@ -69,6 +105,15 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 //        eventRepository.save(Event.builder()
         tempEvent.setOrganizer(org2);
         org2.getOwnEvents().add(tempEvent);
+
+        //par
+        tempEvent.getParticipants().add(p3);
+        p3.getEventHistory().add(tempEvent);
+        tempEvent.getParticipants().add(p4);
+        p4.getEventHistory().add(tempEvent);
+        tempEvent.getParticipants().add(p5);
+        p5.getEventHistory().add(tempEvent);
+
         tempEvent = eventRepository.save(Event.builder()
                 .category("Cultural")
                 .title("Songkran")
@@ -80,5 +125,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .build());
         tempEvent.setOrganizer(org3);
         org3.getOwnEvents().add(tempEvent);
+
+        //par
+        tempEvent.getParticipants().add(p1);
+        p1.getEventHistory().add(tempEvent);
+        tempEvent.getParticipants().add(p2);
+        p2.getEventHistory().add(tempEvent);
+        tempEvent.getParticipants().add(p3);
+        p3.getEventHistory().add(tempEvent);
     }
 }
