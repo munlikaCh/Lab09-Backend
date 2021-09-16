@@ -13,13 +13,13 @@ import java.util.List;
 @AllArgsConstructor
 
 public class EventOrganizerDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Exclude
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @EqualsAndHashCode.Exclude
     Long id;
     String name;
-    @OneToMany(mappedBy = "organizer")
-//    List<Event> ownEvents;
-    @Builder.Default
-    List<Event> ownEvents = new ArrayList<>();
+//    @OneToMany(mappedBy = "organizer")
+////    List<Event> ownEvents;
+//    @Builder.Default
+//    List<Event> ownEvents = new ArrayList<>();
 }

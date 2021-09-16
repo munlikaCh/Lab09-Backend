@@ -11,9 +11,9 @@ import java.util.List;
 @AllArgsConstructor
 
 public class EventDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Exclude
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @EqualsAndHashCode.Exclude
     Long id;
     String category;
     String title;
@@ -22,8 +22,8 @@ public class EventDTO {
     String date;
     String time;
     Boolean petAllowed;
-    @ManyToOne
+//    @ManyToOne
     EventOrganizerDTO organizer;
-    @ManyToMany(mappedBy = "eventHistory")
-    List<Participant> Participants;
+//    @ManyToMany(mappedBy = "eventHistory")
+//    List<Participant> Participants;
 }
